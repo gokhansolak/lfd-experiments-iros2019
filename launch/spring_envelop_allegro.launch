@@ -1,0 +1,31 @@
+<launch>
+
+  <arg name="NUM" default="0"/>
+
+  <arg name="STIFFNESS" default="2.0"/>
+  <arg name="RESTRATE" default="0.6"/>
+
+  <!-- Launch file that publishes the fingertip frames of the allegro hand -->
+  <include file="$(find allegro_hand_kdl)/launch/forward_kinematics.launch" />
+  <!-- Launch file that publishes the torque values to achieve desired cartesian forces -->
+  <include file="$(find allegro_hand_kdl)/launch/control_force.launch" >
+    <arg name="TORQUE_TOPIC" value="spring_envelop_torque"/>
+  </include>
+
+  <!-- Starts the node that creates virtual springs in order to grasp an object -->
+  <node name="envelop_spring_node"
+        type="envelop_spring_node"
+        pkg="lfd_experiments"
+        output="screen"
+        launch-prefix-no="xterm -e gdb --args" >
+
+    <param name="rest_rate" value="$(arg RESTRATE)"/>
+    <param name="stiffness" value="$(arg STIFFNESS)"/>
+
+    <remap from="pose_array" to="allegroHand_$(arg NUM)/pose_array"/>
+
+  </node>
+
+
+
+</launch>

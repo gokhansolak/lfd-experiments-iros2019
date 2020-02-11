@@ -1,0 +1,33 @@
+<launch>
+
+  <arg name="NUM" default="0"/>
+  <arg name="HAND" default="right"/>
+
+  <arg name="time" default="16.0"/>
+  <arg name="frequency" default="30"/>
+
+  <arg name="trajectory_name" default="traj.txt"/>
+
+  <arg name="state_type" default="joint" doc="Options: joint, object, fingertip."/>
+  <arg name="state_size" default="16" doc="Dimensions of DMP."/>
+
+  <!-- it requires a fingertip publisher running. -->
+  <node name="record_demo"
+        type="record_demo"
+        pkg="lfd_experiments"
+        output="screen"
+        launch-prefix-no="xterm -e gdb --args" >
+
+    <param name="record_time" type="double" value="$(arg time)"/>
+    <param name="steps_per_second" type="int" value="$(arg frequency)"/>
+    <param name="state_type" value="$(arg state_type)" />
+    <param name="state_size" value="$(arg state_size)" />
+    <param name="trajectory_name" value="$(arg trajectory_name)"/>
+
+    <!-- name of the fingertip pose topic -->
+    <remap from="pose_array" to="allegroHand_$(arg NUM)/pose_array"/>
+    <remap from="joint_states" to="allegroHand_$(arg NUM)/joint_states"/>
+
+  </node>
+
+</launch>

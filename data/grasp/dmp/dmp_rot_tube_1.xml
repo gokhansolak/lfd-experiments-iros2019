@@ -1,0 +1,611 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<!DOCTYPE boost_serialization>
+<boost_serialization signature="serialization::archive" version="12">
+<dmp class_id="0" object_id="_0">
+	<DynamicalSystem>
+		<dim_>29</dim_>
+		<dim_orig_>9</dim_orig_>
+		<tau_>1.20000000000000000e+01</tau_>
+		<initial_state_>
+			<m>9X1; 0.088350 -0.002869 0.101665 0.201620 -0.832240 -0.516456 0.954269 0.048082 0.295056</m>
+		</initial_state_>
+		<attractor_state_>
+			<m>9X1; 0.088877 0.005143 0.113535 0.203640 -0.951458 -0.230780 0.933937 0.118058 0.337378</m>
+		</attractor_state_>
+		<name_>name</name_>
+		<integration_method_>1</integration_method_>
+	</DynamicalSystem>
+	<Parameterizable>
+		<selected_mask_>
+			<m>0X1;</m>
+		</selected_mask_>
+		<parameter_vector_all_initial_>
+			<m>0X1;</m>
+		</parameter_vector_all_initial_>
+	</Parameterizable>
+	<goal_system_ class_id="5" class_name="DmpBbo::ExponentialSystem" object_id="_1">
+		<DynamicalSystem>
+			<dim_>9</dim_>
+			<dim_orig_>9</dim_orig_>
+			<tau_>1.20000000000000000e+01</tau_>
+			<initial_state_>
+				<m>9X1; 0.088350 -0.002869 0.101665 0.201620 -0.832240 -0.516456 0.954269 0.048082 0.295056</m>
+			</initial_state_>
+			<attractor_state_>
+				<m>9X1; 0.088877 0.005143 0.113535 0.203640 -0.951458 -0.230780 0.933937 0.118058 0.337378</m>
+			</attractor_state_>
+			<name_>name_goal</name_>
+			<integration_method_>1</integration_method_>
+		</DynamicalSystem>
+		<alpha_>1.50000000000000000e+01</alpha_>
+	</goal_system_>
+	<spring_system_ class_id="6" object_id="_2">
+		<DynamicalSystem>
+			<dim_>18</dim_>
+			<dim_orig_>9</dim_orig_>
+			<tau_>1.20000000000000000e+01</tau_>
+			<initial_state_>
+				<m>9X1; 0.088350 -0.002869 0.101665 0.201620 -0.832240 -0.516456 0.954269 0.048082 0.295056</m>
+			</initial_state_>
+			<attractor_state_>
+				<m>9X1; 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000 1.000000</m>
+			</attractor_state_>
+			<name_>name_spring-damper</name_>
+			<integration_method_>1</integration_method_>
+		</DynamicalSystem>
+		<damping_coefficient_>2.00000000000000000e+01</damping_coefficient_>
+		<spring_constant_>1.00000000000000000e+02</spring_constant_>
+		<mass_>1.00000000000000000e+00</mass_>
+	</spring_system_>
+	<phase_system_ class_id="7" class_name="DmpBbo::TimeSystem" object_id="_3">
+		<DynamicalSystem>
+			<dim_>1</dim_>
+			<dim_orig_>1</dim_orig_>
+			<tau_>1.20000000000000000e+01</tau_>
+			<initial_state_>
+				<m>1X1; 0.000000</m>
+			</initial_state_>
+			<attractor_state_>
+				<m>1X1; 1.000000</m>
+			</attractor_state_>
+			<name_>name_phase</name_>
+			<integration_method_>1</integration_method_>
+		</DynamicalSystem>
+		<count_down_>0</count_down_>
+	</phase_system_>
+	<gating_system_ class_id="8" class_name="DmpBbo::SigmoidSystem" object_id="_4">
+		<DynamicalSystem>
+			<dim_>1</dim_>
+			<dim_orig_>1</dim_orig_>
+			<tau_>1.20000000000000000e+01</tau_>
+			<initial_state_>
+				<m>1X1; 1.000000</m>
+			</initial_state_>
+			<attractor_state_>
+				<m>1X1; 0.000000</m>
+			</attractor_state_>
+			<name_>name_gating</name_>
+			<integration_method_>1</integration_method_>
+		</DynamicalSystem>
+		<max_rate_>-2.00000000000000000e+01</max_rate_>
+		<inflection_point_time_>1.08000000000000007e+01</inflection_point_time_>
+		<Ks_>
+			<m>1X1; 1.000000</m>
+		</Ks_>
+	</gating_system_>
+	<function_approximators_ class_id="9" tracking_level="0" version="0">
+		<count>9</count>
+		<item_version>0</item_version>
+		<item class_id="10" class_name="DmpBbo::FunctionApproximatorLWR" object_id="_5">
+			<FunctionApproximator>
+				<Parameterizable>
+					<selected_mask_>
+						<m>0X1;</m>
+					</selected_mask_>
+					<parameter_vector_all_initial_>
+						<m>0X1;</m>
+					</parameter_vector_all_initial_>
+				</Parameterizable>
+				<meta_parameters_ class_id="12" class_name="DmpBbo::MetaParametersLWR" object_id="_6">
+					<MetaParameters>
+						<expected_input_dim_>1</expected_input_dim_>
+					</MetaParameters>
+					<n_bfs_per_dim_>
+						<m>1X1; 30</m>
+					</n_bfs_per_dim_>
+					<centers_per_dim_ class_id="14" tracking_level="0" version="0">
+						<count>0</count>
+						<item_version>0</item_version>
+					</centers_per_dim_>
+					<intersection_height_>5.60000000000000053e-01</intersection_height_>
+					<regularization_>0.00000000000000000e+00</regularization_>
+					<asymmetric_kernels_>0</asymmetric_kernels_>
+				</meta_parameters_>
+				<model_parameters_ class_id="15" class_name="DmpBbo::ModelParametersLWR" object_id="_7">
+					<ModelParameters>
+						<Parameterizable>
+							<selected_mask_>
+								<m>0X1;</m>
+							</selected_mask_>
+							<parameter_vector_all_initial_>
+								<m>0X1;</m>
+							</parameter_vector_all_initial_>
+						</Parameterizable>
+					</ModelParameters>
+					<centers_>
+						<m>30X1; 0.000000 0.034483 0.068966 0.103448 0.137931 0.172414 0.206897 0.241379 0.275862 0.310345 0.344828 0.379310 0.413793 0.448276 0.482759 0.517241 0.551724 0.586207 0.620690 0.655172 0.689655 0.724138 0.758621 0.793103 0.827586 0.862069 0.896552 0.931034 0.965517 1.000000</m>
+					</centers_>
+					<widths_>
+						<m>30X1; 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011</m>
+					</widths_>
+					<slopes_>
+						<m>30X1; 14.500610 -29.754706 34.275497 -7.156479 29.177191 -20.482528 -37.106503 82.944691 -43.443076 15.015311 25.002934 -4.089525 -2.115735 4.208071 -5.712152 1.070458 -0.833463 1.037848 25.526840 -44.683617 13.255338 0.504545 0.504619 0.328016 1.415102 -1.021198 -0.840337 1.798042 -0.934273 34.282462</m>
+					</slopes_>
+					<offsets_>
+						<m>30X1; -0.251144 0.567973 -2.522746 0.631360 -3.429979 2.618718 8.446128 -20.733275 13.095075 -6.062361 -8.336348 1.337306 0.819200 -2.223806 2.857462 -0.557528 0.405339 -0.606111 -15.565064 29.333486 -9.324621 -0.351789 -0.402545 -0.232165 -1.183162 0.907884 0.782039 -1.637915 0.905092 -33.677014</m>
+					</offsets_>
+					<asymmetric_kernels_>0</asymmetric_kernels_>
+					<lines_pivot_at_max_activation_>0</lines_pivot_at_max_activation_>
+					<slopes_as_angles_>0</slopes_as_angles_>
+					<all_values_vector_size_>120</all_values_vector_size_>
+					<caching_>0</caching_>
+				</model_parameters_>
+			</FunctionApproximator>
+		</item>
+		<item class_id_reference="10" object_id="_8">
+			<FunctionApproximator>
+				<Parameterizable>
+					<selected_mask_>
+						<m>0X1;</m>
+					</selected_mask_>
+					<parameter_vector_all_initial_>
+						<m>0X1;</m>
+					</parameter_vector_all_initial_>
+				</Parameterizable>
+				<meta_parameters_ class_id_reference="12" object_id="_9">
+					<MetaParameters>
+						<expected_input_dim_>1</expected_input_dim_>
+					</MetaParameters>
+					<n_bfs_per_dim_>
+						<m>1X1; 30</m>
+					</n_bfs_per_dim_>
+					<centers_per_dim_>
+						<count>0</count>
+						<item_version>0</item_version>
+					</centers_per_dim_>
+					<intersection_height_>5.60000000000000053e-01</intersection_height_>
+					<regularization_>0.00000000000000000e+00</regularization_>
+					<asymmetric_kernels_>0</asymmetric_kernels_>
+				</meta_parameters_>
+				<model_parameters_ class_id_reference="15" object_id="_10">
+					<ModelParameters>
+						<Parameterizable>
+							<selected_mask_>
+								<m>0X1;</m>
+							</selected_mask_>
+							<parameter_vector_all_initial_>
+								<m>0X1;</m>
+							</parameter_vector_all_initial_>
+						</Parameterizable>
+					</ModelParameters>
+					<centers_>
+						<m>30X1; 0.000000 0.034483 0.068966 0.103448 0.137931 0.172414 0.206897 0.241379 0.275862 0.310345 0.344828 0.379310 0.413793 0.448276 0.482759 0.517241 0.551724 0.586207 0.620690 0.655172 0.689655 0.724138 0.758621 0.793103 0.827586 0.862069 0.896552 0.931034 0.965517 1.000000</m>
+					</centers_>
+					<widths_>
+						<m>30X1; 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011</m>
+					</widths_>
+					<slopes_>
+						<m>30X1; 98.192597 -45.236625 44.109984 18.901578 -66.398497 63.859927 -26.176653 22.476604 -56.893051 57.070887 -26.550120 37.422385 11.538902 -5.528221 2.642537 -0.255991 3.414813 -17.507609 3.546565 29.642519 -6.073520 1.982702 3.871420 2.560217 -1.831744 1.742984 1.032455 -4.127034 -3.985157 -18.104197</m>
+					</slopes_>
+					<offsets_>
+						<m>30X1; -0.918644 2.222979 -3.442283 -0.725964 8.764340 -11.080884 4.987924 -5.189530 15.293009 -17.888262 10.188459 -15.179522 -4.116072 1.985113 -1.382011 0.198658 -1.678967 10.539206 -2.637771 -18.851925 3.909478 -1.474870 -2.967435 -1.941934 1.571581 -1.427876 -0.855300 3.896233 3.812884 17.601704</m>
+					</offsets_>
+					<asymmetric_kernels_>0</asymmetric_kernels_>
+					<lines_pivot_at_max_activation_>0</lines_pivot_at_max_activation_>
+					<slopes_as_angles_>0</slopes_as_angles_>
+					<all_values_vector_size_>120</all_values_vector_size_>
+					<caching_>0</caching_>
+				</model_parameters_>
+			</FunctionApproximator>
+		</item>
+		<item class_id_reference="10" object_id="_11">
+			<FunctionApproximator>
+				<Parameterizable>
+					<selected_mask_>
+						<m>0X1;</m>
+					</selected_mask_>
+					<parameter_vector_all_initial_>
+						<m>0X1;</m>
+					</parameter_vector_all_initial_>
+				</Parameterizable>
+				<meta_parameters_ class_id_reference="12" object_id="_12">
+					<MetaParameters>
+						<expected_input_dim_>1</expected_input_dim_>
+					</MetaParameters>
+					<n_bfs_per_dim_>
+						<m>1X1; 30</m>
+					</n_bfs_per_dim_>
+					<centers_per_dim_>
+						<count>0</count>
+						<item_version>0</item_version>
+					</centers_per_dim_>
+					<intersection_height_>5.60000000000000053e-01</intersection_height_>
+					<regularization_>0.00000000000000000e+00</regularization_>
+					<asymmetric_kernels_>0</asymmetric_kernels_>
+				</meta_parameters_>
+				<model_parameters_ class_id_reference="15" object_id="_13">
+					<ModelParameters>
+						<Parameterizable>
+							<selected_mask_>
+								<m>0X1;</m>
+							</selected_mask_>
+							<parameter_vector_all_initial_>
+								<m>0X1;</m>
+							</parameter_vector_all_initial_>
+						</Parameterizable>
+					</ModelParameters>
+					<centers_>
+						<m>30X1; 0.000000 0.034483 0.068966 0.103448 0.137931 0.172414 0.206897 0.241379 0.275862 0.310345 0.344828 0.379310 0.413793 0.448276 0.482759 0.517241 0.551724 0.586207 0.620690 0.655172 0.689655 0.724138 0.758621 0.793103 0.827586 0.862069 0.896552 0.931034 0.965517 1.000000</m>
+					</centers_>
+					<widths_>
+						<m>30X1; 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011</m>
+					</widths_>
+					<slopes_>
+						<m>30X1; 5.349961 24.414351 -48.910677 34.833083 43.512024 -89.344460 72.169871 -73.285389 22.173359 5.295105 69.595557 -125.518552 44.757043 -6.257561 6.817581 3.672454 -2.990165 2.045612 7.640316 -20.834920 8.173588 -3.632747 -0.431581 3.966200 -1.047895 0.906316 -1.472129 -1.536194 2.317926 31.968561</m>
+					</slopes_>
+					<offsets_>
+						<m>30X1; -0.110613 -0.282896 2.418663 -3.930876 -5.233914 14.395510 -14.827355 17.579887 -5.262586 -1.749159 -23.330543 47.564413 -18.665973 2.980847 -3.451707 -2.041615 1.644096 -1.192526 -4.572270 13.547450 -5.551293 2.646055 0.314201 -3.155845 0.919215 -0.803468 1.351694 1.393308 -2.244030 -31.404527</m>
+					</offsets_>
+					<asymmetric_kernels_>0</asymmetric_kernels_>
+					<lines_pivot_at_max_activation_>0</lines_pivot_at_max_activation_>
+					<slopes_as_angles_>0</slopes_as_angles_>
+					<all_values_vector_size_>120</all_values_vector_size_>
+					<caching_>0</caching_>
+				</model_parameters_>
+			</FunctionApproximator>
+		</item>
+		<item class_id_reference="10" object_id="_14">
+			<FunctionApproximator>
+				<Parameterizable>
+					<selected_mask_>
+						<m>0X1;</m>
+					</selected_mask_>
+					<parameter_vector_all_initial_>
+						<m>0X1;</m>
+					</parameter_vector_all_initial_>
+				</Parameterizable>
+				<meta_parameters_ class_id_reference="12" object_id="_15">
+					<MetaParameters>
+						<expected_input_dim_>1</expected_input_dim_>
+					</MetaParameters>
+					<n_bfs_per_dim_>
+						<m>1X1; 30</m>
+					</n_bfs_per_dim_>
+					<centers_per_dim_>
+						<count>0</count>
+						<item_version>0</item_version>
+					</centers_per_dim_>
+					<intersection_height_>5.60000000000000053e-01</intersection_height_>
+					<regularization_>0.00000000000000000e+00</regularization_>
+					<asymmetric_kernels_>0</asymmetric_kernels_>
+				</meta_parameters_>
+				<model_parameters_ class_id_reference="15" object_id="_16">
+					<ModelParameters>
+						<Parameterizable>
+							<selected_mask_>
+								<m>0X1;</m>
+							</selected_mask_>
+							<parameter_vector_all_initial_>
+								<m>0X1;</m>
+							</parameter_vector_all_initial_>
+						</Parameterizable>
+					</ModelParameters>
+					<centers_>
+						<m>30X1; 0.000000 0.034483 0.068966 0.103448 0.137931 0.172414 0.206897 0.241379 0.275862 0.310345 0.344828 0.379310 0.413793 0.448276 0.482759 0.517241 0.551724 0.586207 0.620690 0.655172 0.689655 0.724138 0.758621 0.793103 0.827586 0.862069 0.896552 0.931034 0.965517 1.000000</m>
+					</centers_>
+					<widths_>
+						<m>30X1; 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011</m>
+					</widths_>
+					<slopes_>
+						<m>30X1; 629.695400 -659.030228 493.274690 387.489830 1123.116388 815.910517 -2481.995548 3326.193521 -2209.115663 1438.051578 311.228989 142.934168 -47.749020 -5.568653 -79.399350 -122.342623 189.039959 -137.616634 -3005.618910 5306.158144 -1333.072332 85.380534 22.658956 12.559052 -6.430248 33.338198 -44.478964 4.839772 -11.395751 211.716367</m>
+					</slopes_>
+					<offsets_>
+						<m>30X1; -6.894273 10.545293 -26.341745 -42.954753 -126.371153 -128.169838 536.385480 -813.422758 648.630750 -483.260822 -75.242925 -61.196825 30.795742 2.680588 50.478143 69.530111 -96.503648 92.027770 1825.710222 -3478.799214 928.657202 -60.737235 -17.596234 -8.721357 4.251275 -28.645097 40.148105 -3.935654 10.956286 -208.340509</m>
+					</offsets_>
+					<asymmetric_kernels_>0</asymmetric_kernels_>
+					<lines_pivot_at_max_activation_>0</lines_pivot_at_max_activation_>
+					<slopes_as_angles_>0</slopes_as_angles_>
+					<all_values_vector_size_>120</all_values_vector_size_>
+					<caching_>0</caching_>
+				</model_parameters_>
+			</FunctionApproximator>
+		</item>
+		<item class_id_reference="10" object_id="_17">
+			<FunctionApproximator>
+				<Parameterizable>
+					<selected_mask_>
+						<m>0X1;</m>
+					</selected_mask_>
+					<parameter_vector_all_initial_>
+						<m>0X1;</m>
+					</parameter_vector_all_initial_>
+				</Parameterizable>
+				<meta_parameters_ class_id_reference="12" object_id="_18">
+					<MetaParameters>
+						<expected_input_dim_>1</expected_input_dim_>
+					</MetaParameters>
+					<n_bfs_per_dim_>
+						<m>1X1; 30</m>
+					</n_bfs_per_dim_>
+					<centers_per_dim_>
+						<count>0</count>
+						<item_version>0</item_version>
+					</centers_per_dim_>
+					<intersection_height_>5.60000000000000053e-01</intersection_height_>
+					<regularization_>0.00000000000000000e+00</regularization_>
+					<asymmetric_kernels_>0</asymmetric_kernels_>
+				</meta_parameters_>
+				<model_parameters_ class_id_reference="15" object_id="_19">
+					<ModelParameters>
+						<Parameterizable>
+							<selected_mask_>
+								<m>0X1;</m>
+							</selected_mask_>
+							<parameter_vector_all_initial_>
+								<m>0X1;</m>
+							</parameter_vector_all_initial_>
+						</Parameterizable>
+					</ModelParameters>
+					<centers_>
+						<m>30X1; 0.000000 0.034483 0.068966 0.103448 0.137931 0.172414 0.206897 0.241379 0.275862 0.310345 0.344828 0.379310 0.413793 0.448276 0.482759 0.517241 0.551724 0.586207 0.620690 0.655172 0.689655 0.724138 0.758621 0.793103 0.827586 0.862069 0.896552 0.931034 0.965517 1.000000</m>
+					</centers_>
+					<widths_>
+						<m>30X1; 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011</m>
+					</widths_>
+					<slopes_>
+						<m>30X1; 840.616691 -502.340356 320.953543 754.596636 -610.710502 200.740016 -394.111121 740.441763 -326.361566 224.089581 -164.296903 415.655832 -40.122957 13.816168 -34.539524 70.792206 -137.853834 11.790258 -519.305977 840.792603 -128.787893 -37.209915 8.934693 31.881462 -5.198190 -13.069679 6.224148 7.143608 -33.000207 331.916641</m>
+					</slopes_>
+					<offsets_>
+						<m>30X1; -9.680683 9.423090 -24.458222 -77.048070 81.554938 -43.517495 92.803764 -184.537169 93.707741 -79.959201 56.032558 -156.091696 23.499325 -10.947824 19.985487 -34.616572 77.925764 -4.132158 313.286862 -551.945495 90.473268 26.793748 -6.885382 -24.907158 4.221716 11.441897 -5.144305 -5.988131 31.815657 -326.890433</m>
+					</offsets_>
+					<asymmetric_kernels_>0</asymmetric_kernels_>
+					<lines_pivot_at_max_activation_>0</lines_pivot_at_max_activation_>
+					<slopes_as_angles_>0</slopes_as_angles_>
+					<all_values_vector_size_>120</all_values_vector_size_>
+					<caching_>0</caching_>
+				</model_parameters_>
+			</FunctionApproximator>
+		</item>
+		<item class_id_reference="10" object_id="_20">
+			<FunctionApproximator>
+				<Parameterizable>
+					<selected_mask_>
+						<m>0X1;</m>
+					</selected_mask_>
+					<parameter_vector_all_initial_>
+						<m>0X1;</m>
+					</parameter_vector_all_initial_>
+				</Parameterizable>
+				<meta_parameters_ class_id_reference="12" object_id="_21">
+					<MetaParameters>
+						<expected_input_dim_>1</expected_input_dim_>
+					</MetaParameters>
+					<n_bfs_per_dim_>
+						<m>1X1; 30</m>
+					</n_bfs_per_dim_>
+					<centers_per_dim_>
+						<count>0</count>
+						<item_version>0</item_version>
+					</centers_per_dim_>
+					<intersection_height_>5.60000000000000053e-01</intersection_height_>
+					<regularization_>0.00000000000000000e+00</regularization_>
+					<asymmetric_kernels_>0</asymmetric_kernels_>
+				</meta_parameters_>
+				<model_parameters_ class_id_reference="15" object_id="_22">
+					<ModelParameters>
+						<Parameterizable>
+							<selected_mask_>
+								<m>0X1;</m>
+							</selected_mask_>
+							<parameter_vector_all_initial_>
+								<m>0X1;</m>
+							</parameter_vector_all_initial_>
+						</Parameterizable>
+					</ModelParameters>
+					<centers_>
+						<m>30X1; 0.000000 0.034483 0.068966 0.103448 0.137931 0.172414 0.206897 0.241379 0.275862 0.310345 0.344828 0.379310 0.413793 0.448276 0.482759 0.517241 0.551724 0.586207 0.620690 0.655172 0.689655 0.724138 0.758621 0.793103 0.827586 0.862069 0.896552 0.931034 0.965517 1.000000</m>
+					</centers_>
+					<widths_>
+						<m>30X1; 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011</m>
+					</widths_>
+					<slopes_>
+						<m>30X1; -1216.185674 528.686463 -335.852381 -1257.959394 1823.718221 280.330148 -660.174970 592.422860 -873.834170 731.615394 1301.229387 -2004.736305 114.724209 -68.652846 50.452139 -505.874488 922.689622 -240.550913 -1040.870186 2069.504819 -844.287890 229.934561 -16.722406 -120.305687 15.379033 83.718601 -65.206228 -25.099598 126.040866 -1180.797843</m>
+					</slopes_>
+					<offsets_>
+						<m>30X1; 12.770035 -13.056829 25.984210 122.726266 -236.032083 -19.066882 124.833741 -134.457146 268.159032 -226.353105 -402.321176 743.198275 -68.068896 52.911933 -24.903853 259.235985 -508.683791 142.318105 639.071934 -1351.179004 585.243554 -164.899166 12.766836 94.951716 -13.335472 -72.809359 56.902393 21.129300 -121.542656 1163.062311</m>
+					</offsets_>
+					<asymmetric_kernels_>0</asymmetric_kernels_>
+					<lines_pivot_at_max_activation_>0</lines_pivot_at_max_activation_>
+					<slopes_as_angles_>0</slopes_as_angles_>
+					<all_values_vector_size_>120</all_values_vector_size_>
+					<caching_>0</caching_>
+				</model_parameters_>
+			</FunctionApproximator>
+		</item>
+		<item class_id_reference="10" object_id="_23">
+			<FunctionApproximator>
+				<Parameterizable>
+					<selected_mask_>
+						<m>0X1;</m>
+					</selected_mask_>
+					<parameter_vector_all_initial_>
+						<m>0X1;</m>
+					</parameter_vector_all_initial_>
+				</Parameterizable>
+				<meta_parameters_ class_id_reference="12" object_id="_24">
+					<MetaParameters>
+						<expected_input_dim_>1</expected_input_dim_>
+					</MetaParameters>
+					<n_bfs_per_dim_>
+						<m>1X1; 30</m>
+					</n_bfs_per_dim_>
+					<centers_per_dim_>
+						<count>0</count>
+						<item_version>0</item_version>
+					</centers_per_dim_>
+					<intersection_height_>5.60000000000000053e-01</intersection_height_>
+					<regularization_>0.00000000000000000e+00</regularization_>
+					<asymmetric_kernels_>0</asymmetric_kernels_>
+				</meta_parameters_>
+				<model_parameters_ class_id_reference="15" object_id="_25">
+					<ModelParameters>
+						<Parameterizable>
+							<selected_mask_>
+								<m>0X1;</m>
+							</selected_mask_>
+							<parameter_vector_all_initial_>
+								<m>0X1;</m>
+							</parameter_vector_all_initial_>
+						</Parameterizable>
+					</ModelParameters>
+					<centers_>
+						<m>30X1; 0.000000 0.034483 0.068966 0.103448 0.137931 0.172414 0.206897 0.241379 0.275862 0.310345 0.344828 0.379310 0.413793 0.448276 0.482759 0.517241 0.551724 0.586207 0.620690 0.655172 0.689655 0.724138 0.758621 0.793103 0.827586 0.862069 0.896552 0.931034 0.965517 1.000000</m>
+					</centers_>
+					<widths_>
+						<m>30X1; 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011</m>
+					</widths_>
+					<slopes_>
+						<m>30X1; -195.643016 389.925496 -365.231540 -13.839455 -716.357805 -86.195698 1390.373204 -2143.357905 1469.974702 -1275.014445 -478.705071 509.845036 -61.977645 20.432724 95.302761 58.859345 -180.881502 54.116598 861.838954 -1536.673128 388.403101 -76.602999 -0.759797 4.235285 6.551783 -24.822626 9.386834 -9.372466 71.322753 766.178924</m>
+					</slopes_>
+					<offsets_>
+						<m>30X1; 2.941685 -5.254244 23.808917 3.540374 83.529208 15.671246 -303.051415 535.351460 -432.085342 425.690912 138.573543 -185.394085 23.363195 -7.464520 -50.785470 -31.256510 97.621041 -35.899177 -522.523474 1005.522944 -268.168424 55.291192 0.278916 -4.093760 -4.562811 20.942442 -8.568843 8.301142 -68.622483 -751.319281</m>
+					</offsets_>
+					<asymmetric_kernels_>0</asymmetric_kernels_>
+					<lines_pivot_at_max_activation_>0</lines_pivot_at_max_activation_>
+					<slopes_as_angles_>0</slopes_as_angles_>
+					<all_values_vector_size_>120</all_values_vector_size_>
+					<caching_>0</caching_>
+				</model_parameters_>
+			</FunctionApproximator>
+		</item>
+		<item class_id_reference="10" object_id="_26">
+			<FunctionApproximator>
+				<Parameterizable>
+					<selected_mask_>
+						<m>0X1;</m>
+					</selected_mask_>
+					<parameter_vector_all_initial_>
+						<m>0X1;</m>
+					</parameter_vector_all_initial_>
+				</Parameterizable>
+				<meta_parameters_ class_id_reference="12" object_id="_27">
+					<MetaParameters>
+						<expected_input_dim_>1</expected_input_dim_>
+					</MetaParameters>
+					<n_bfs_per_dim_>
+						<m>1X1; 30</m>
+					</n_bfs_per_dim_>
+					<centers_per_dim_>
+						<count>0</count>
+						<item_version>0</item_version>
+					</centers_per_dim_>
+					<intersection_height_>5.60000000000000053e-01</intersection_height_>
+					<regularization_>0.00000000000000000e+00</regularization_>
+					<asymmetric_kernels_>0</asymmetric_kernels_>
+				</meta_parameters_>
+				<model_parameters_ class_id_reference="15" object_id="_28">
+					<ModelParameters>
+						<Parameterizable>
+							<selected_mask_>
+								<m>0X1;</m>
+							</selected_mask_>
+							<parameter_vector_all_initial_>
+								<m>0X1;</m>
+							</parameter_vector_all_initial_>
+						</Parameterizable>
+					</ModelParameters>
+					<centers_>
+						<m>30X1; 0.000000 0.034483 0.068966 0.103448 0.137931 0.172414 0.206897 0.241379 0.275862 0.310345 0.344828 0.379310 0.413793 0.448276 0.482759 0.517241 0.551724 0.586207 0.620690 0.655172 0.689655 0.724138 0.758621 0.793103 0.827586 0.862069 0.896552 0.931034 0.965517 1.000000</m>
+					</centers_>
+					<widths_>
+						<m>30X1; 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011</m>
+					</widths_>
+					<slopes_>
+						<m>30X1; -125.275748 311.650150 -476.575930 119.655893 547.118644 1193.255608 -1160.620253 1202.426167 -1050.904714 425.791931 458.931447 -118.579659 -84.537889 -14.837270 14.311935 -274.942056 394.330850 -199.103305 -2958.511573 5274.606406 -1434.097620 101.630329 18.145245 -24.812035 4.770784 42.376697 -63.006572 -12.583000 101.043308 553.717427</m>
+					</slopes_>
+					<offsets_>
+						<m>30X1; 2.935756 -4.507207 37.831043 -15.670147 -69.150053 -174.892894 241.932540 -273.627965 313.764396 -141.395945 -131.855321 38.845160 37.608494 16.587119 2.289770 147.545385 -210.660190 126.166989 1800.072412 -3457.464010 1000.359450 -71.998090 -14.470605 20.167866 -4.513833 -37.094196 56.085658 11.141001 -97.323794 -541.949893</m>
+					</offsets_>
+					<asymmetric_kernels_>0</asymmetric_kernels_>
+					<lines_pivot_at_max_activation_>0</lines_pivot_at_max_activation_>
+					<slopes_as_angles_>0</slopes_as_angles_>
+					<all_values_vector_size_>120</all_values_vector_size_>
+					<caching_>0</caching_>
+				</model_parameters_>
+			</FunctionApproximator>
+		</item>
+		<item class_id_reference="10" object_id="_29">
+			<FunctionApproximator>
+				<Parameterizable>
+					<selected_mask_>
+						<m>0X1;</m>
+					</selected_mask_>
+					<parameter_vector_all_initial_>
+						<m>0X1;</m>
+					</parameter_vector_all_initial_>
+				</Parameterizable>
+				<meta_parameters_ class_id_reference="12" object_id="_30">
+					<MetaParameters>
+						<expected_input_dim_>1</expected_input_dim_>
+					</MetaParameters>
+					<n_bfs_per_dim_>
+						<m>1X1; 30</m>
+					</n_bfs_per_dim_>
+					<centers_per_dim_>
+						<count>0</count>
+						<item_version>0</item_version>
+					</centers_per_dim_>
+					<intersection_height_>5.60000000000000053e-01</intersection_height_>
+					<regularization_>0.00000000000000000e+00</regularization_>
+					<asymmetric_kernels_>0</asymmetric_kernels_>
+				</meta_parameters_>
+				<model_parameters_ class_id_reference="15" object_id="_31">
+					<ModelParameters>
+						<Parameterizable>
+							<selected_mask_>
+								<m>0X1;</m>
+							</selected_mask_>
+							<parameter_vector_all_initial_>
+								<m>0X1;</m>
+							</parameter_vector_all_initial_>
+						</Parameterizable>
+					</ModelParameters>
+					<centers_>
+						<m>30X1; 0.000000 0.034483 0.068966 0.103448 0.137931 0.172414 0.206897 0.241379 0.275862 0.310345 0.344828 0.379310 0.413793 0.448276 0.482759 0.517241 0.551724 0.586207 0.620690 0.655172 0.689655 0.724138 0.758621 0.793103 0.827586 0.862069 0.896552 0.931034 0.965517 1.000000</m>
+					</centers_>
+					<widths_>
+						<m>30X1; 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011 0.016011</m>
+					</widths_>
+					<slopes_>
+						<m>30X1; 653.833980 -1446.477158 1429.948289 39.404697 2207.896922 -390.293431 -3473.890948 5230.769511 -3508.624674 3069.826439 1095.836501 -1287.470380 226.798320 -44.316650 -250.786033 -2.104424 252.980157 -35.832545 -986.139677 1821.467398 -440.257286 177.316501 -4.232570 -3.258022 -19.815763 54.250431 -4.097996 30.232613 -232.503269 -2311.124682</m>
+					</slopes_>
+					<offsets_>
+						<m>30X1; -9.858905 20.682011 -94.527854 -9.944560 -252.736382 50.769563 758.943051 -1318.953672 1026.637918 -1029.003727 -319.570571 470.250597 -88.655641 10.996809 129.188142 1.150263 -136.831793 27.457080 596.569984 -1190.832083 299.435044 -128.471984 4.280176 4.444299 14.215301 -45.304691 4.235297 -26.767111 223.739496 2265.942484</m>
+					</offsets_>
+					<asymmetric_kernels_>0</asymmetric_kernels_>
+					<lines_pivot_at_max_activation_>0</lines_pivot_at_max_activation_>
+					<slopes_as_angles_>0</slopes_as_angles_>
+					<all_values_vector_size_>120</all_values_vector_size_>
+					<caching_>0</caching_>
+				</model_parameters_>
+			</FunctionApproximator>
+		</item>
+	</function_approximators_>
+	<forcing_term_scaling_>0</forcing_term_scaling_>
+	<trajectory_amplitudes_>
+		<m>9X1; 0.001772 0.008279 0.011998 0.115178 0.120788 0.345833 0.059773 0.158579 0.133797</m>
+	</trajectory_amplitudes_>
+	<perturbation_standard_deviation_>0.00000000000000000e+00</perturbation_standard_deviation_>
+</dmp>
+</boost_serialization>
+

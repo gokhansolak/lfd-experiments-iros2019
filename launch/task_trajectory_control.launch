@@ -1,0 +1,32 @@
+<launch>
+
+  <arg name="NUM" default="0"/>
+  <arg name="HAND" default="right"/>
+
+  <!-- duration of reproduction (sec) -->
+  <arg name="time" default="10.0"/>
+
+  <!-- *optional* dmp trajectory file to execute at start -->
+  <!-- object path is relative to the ~/.ros directory -->
+  <arg name="dmp" default="" />
+
+  <!-- reload gains -->
+  <rosparam file="$(find allegro_hand_kdl)/config/gains.yaml" command="load"
+    ns="allegroHand_$(arg HAND)_$(arg NUM)"/>
+
+  <node name="task_trajectory_server"
+        type="task_trajectory_server"
+        pkg="lfd_experiments"
+        output="screen">
+
+    <param name="play_time" type="double" value="$(arg time)"/>
+    <param name="dmp" value="$(arg dmp)" />
+
+    <!-- topic remappings -->
+    <remap from="joint_states" to="allegroHand_$(arg NUM)/joint_states"/>
+    <remap from="pose_array" to="allegroHand_$(arg NUM)/pose_array"/>
+    <remap from="traj_torque" to="position_torque"/>
+
+  </node>
+
+</launch>

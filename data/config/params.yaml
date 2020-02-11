@@ -1,0 +1,15 @@
+# These are the general parameters used commonly through all packages
+
+lfd_experiments:
+  # how long is the demonstrated task (seconds)
+  record_time: 16.0
+  # how long is the reproduced task (seconds)
+  # this param can be used to scale the timing
+  reproduce_time: 24.0
+  # kdl inverse dynamics parameters are smaller than expected
+  # this scaler is used to scale them to an effective level
+  # e.g. gravity compensation uses this scaler
+  kdl_scaler: 3.8
+  # safety threshold for torques applied to joints
+  # every package uses this value to halt the system if it's exceeded
+  safety_torque: 1.6

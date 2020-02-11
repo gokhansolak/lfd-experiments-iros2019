@@ -1,0 +1,7 @@
+bool active
+# rest length & stiffness can be ignored by -1 value
+float32 rest_length
+float32 stiffness
+# finger index, negative applies to all fingers
+int32 index
+---

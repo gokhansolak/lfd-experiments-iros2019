@@ -1,0 +1,69 @@
+<launch>
+
+  <arg name="sim" default="false" />
+
+  <arg name="num" default="0"/>
+  <arg name="hand" default="right"/>
+
+  <!-- duration of reproduction (sec) -->
+  <arg name="time" default="10.0"/>
+  <!-- position gain -->
+  <arg name="pos_gain" default="20.0"/>
+  <!-- rotation gain -->
+  <arg name="rot_gain" default="10.0"/>
+  <!-- velocity gain -->
+  <arg name="vel_gain" default="0.5"/>
+
+  <arg name="stiffness" default="2.0"/>
+  <arg name="restrate" default="0.6"/>
+
+  <arg name="anti_collision_gain" default="2.0" />
+
+  <arg name="pose_array" default="allegroHand_$(arg num)/pose_array" />
+  <!-- *optional* dmp trajectory file to execute at start -->
+  <!-- object path is relative to the ~/.ros directory -->
+  <arg name="dmp" default="" />
+
+  <!-- args for debug -->
+  <arg name="record_bag" default="false"/>
+
+  <!-- Launch file that publishes the fingertip frames of the allegro hand -->
+  <include file="$(find allegro_hand_kdl)/launch/forward_kinematics.launch" />
+  <!-- Launch file that publishes the torque values to achieve desired cartesian forces -->
+  <include file="$(find allegro_hand_kdl)/launch/control_force.launch" >
+
+    <arg name="TORQUE_TOPIC" value="spring_envelop_torque"/>
+    <arg name="INPUT_TOPIC" value="spring_forces" />
+  </include>
+
+  <node name="spring_trajectory_server"
+        type="spring_trajectory_server"
+        pkg="lfd_experiments"
+        output="screen">
+
+    <param name="play_time" type="double" value="$(arg time)"/>
+    <param name="k_pos" type="double" value="$(arg pos_gain)"/>
+    <param name="k_rot" type="double" value="$(arg rot_gain)"/>
+    <param name="k_vel" type="double" value="$(arg vel_gain)"/>
+    <param name="stiffness" type="double" value="$(arg stiffness)"/>
+    <param name="rest_rate" type="double" value="$(arg restrate)"/>
+    <param name="anti_collision_gain" type="double" value="$(arg anti_collision_gain)"/>
+
+    <param name="dmp" value="$(arg dmp)" />
+
+    <remap from="pose_array" to="$(arg pose_array)"/>
+    <remap from="base_pose" to="allegroHand_$(arg num)/base_pose"/>
+    <!-- don't publish torques in simulation -->
+    <remap if="$(arg sim)" from="grasp_forces" to="dont_use"/>
+    <remap if="$(arg sim)" from="manipulation_forces" to="dont_use"/>
+
+    <remap unless="$(arg sim)" from="grasp_forces" to="spring_forces"/>
+    <remap unless="$(arg sim)" from="manipulation_forces" to="spring_traj_forces"/>
+
+  </node>
+
+  <node pkg="rosbag" type="record" name="rosbag_vf"
+        args="record --duration=$(arg time) -O $(find lfd_experiments)/rosbags/reproduce_spring/vf_$(arg pos_gain)_$(arg rot_gain).bag /virtual_frame_pub"
+        if="$(arg record_bag)" />
+
+</launch>

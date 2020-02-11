@@ -1,0 +1,69 @@
+# list of learned manipulation actions
+# rotations are in Euler format
+manipulate:
+  i0:
+    name: iros exp 1 original
+    type: object
+    dmp: iros_exp_2
+    time: 10
+  i1:
+    name: iros exp 1 goal+1
+    type: object
+    dmp: iros_exp_2
+    time: 10
+    goal:
+      pos:
+        x: 0.0
+        y: 0.0
+        z: 0.01
+      rot:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+  i2:
+    name: iros exp 1 goal-2
+    type: object
+    dmp: iros_exp_2
+    time: 10
+    goal:
+      pos:
+        x: 0.0
+        y: 0.0
+        z: -0.02
+      rot:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+  i3:
+    name: iros exp 1 goal+3
+    type: object
+    dmp: iros_exp_2
+    time: 10
+    goal:
+      pos:
+        x: 0.0
+        y: 0.0
+        z: 0.03
+      rot:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+  i4:
+    name: iros exp 1 goal+2
+    type: object
+    dmp: iros_exp_2
+    time: 10
+    goal:
+      pos:
+        x: 0.0
+        y: 0.0
+        z: 0.02
+      rot:
+        x: 0.0
+        y: 0.0
+        z: 0.0
+  i5:
+    name: iros exp rotate orig
+    type: object
+    dmp: iros_exp_rot_2
+    time: 14

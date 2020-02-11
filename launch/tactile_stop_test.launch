@@ -1,0 +1,35 @@
+<launch>
+
+  <arg name="NUM" default="0"/>
+  <arg name="HAND" default="right"/>
+
+  <arg name="threshold" default="5"/>
+
+  <node name="tactile_stop"
+        type="tactile_stop"
+        pkg="lfd_experiments"
+        output="screen"
+        launch-prefix-inactive="xterm -e gdb --args" >
+
+      <param name="threshold" value="$(arg threshold)"/>
+
+      <remap from="torque_in" to="traj_torque"/>
+      <remap from="torque_out" to="position_torque"/>
+
+  </node>
+
+  <node name="joint_trajectory_server"
+        type="joint_trajectory_server"
+        pkg="lfd_experiments"
+        output="screen"
+        launch-prefix-inactive="xterm -e gdb --args" >
+
+    <param name="play_time" type="double" value="0"/>
+    <param name="dmp" value=""/>
+
+    <!-- topic remappings -->
+    <remap from="joint_states" to="allegroHand_$(arg NUM)/joint_states"/>
+
+  </node>
+
+</launch>

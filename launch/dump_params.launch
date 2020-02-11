@@ -1,0 +1,7 @@
+<launch>
+
+  <arg name="exp_no" default="0" />
+
+  <rosparam command="dump" file="iros_param_$(arg exp_no)" />
+  
+</launch>

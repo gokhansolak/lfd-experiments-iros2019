@@ -1,0 +1,9 @@
+string dmp
+float64 duration
+# goal types will be ignored by unrelated nodes
+# cartesian goal is relative to current pose
+bool custom_goal
+geometry_msgs/Pose cartesian_goal
+float64[] joint_goal
+---
+bool success

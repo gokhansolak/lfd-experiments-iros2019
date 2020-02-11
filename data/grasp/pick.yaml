@@ -1,0 +1,30 @@
+# list of learned pick actions
+# palm pos w.r.t. zero_point
+# rotations are in Euler format
+pick:
+  i0:
+    name: iros_close
+    palm:
+      pos:
+        x: -0.02
+        y: 0
+        z: 0.152
+      rot:
+        x: 0
+        y: -1.658
+        z: -3.142
+    pregrasp: iros_close
+    dmp: grasp_demo
+  i1:
+    name: iros_even_closer
+    palm:
+      pos:
+        x: -0.02
+        y: 0
+        z: 0.142
+      rot:
+        x: 0
+        y: -1.658
+        z: -3.142
+    pregrasp: iros_close
+    dmp: grasp_demo

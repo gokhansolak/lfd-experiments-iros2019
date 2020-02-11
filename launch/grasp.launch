@@ -1,0 +1,140 @@
+<launch>
+
+  <!-- By default, we are not in debug mode -->
+  <arg name="debug" default="false" />
+
+  <arg name="sim" default="false" />
+
+  <!-- Allegro num is needed in order to support multiple hands -->
+  <arg name="hand" default="right"/>
+  <arg name="num" default="0"/>
+
+  <!-- spring params -->
+  <arg name="rest_length" default="0.90" unless="$(arg sim)"/>
+  <arg name="rest_length" default="1.0" if="$(arg sim)" />
+  <arg name="stiffness" default="6.0" />
+
+  <arg name="anti_collision_gain" default="0.0" />
+
+  <!-- tactile stop params -->
+  <arg name="stop_threshold" default="3" />
+
+  <!-- tactile params -->
+  <arg name="target_force" default="20"/>
+  <arg name="adjuster_gain" default="0.001"/>
+  <arg name="force_tolerance" default="6"/>
+
+  <!-- slower safer  -->
+  <arg name="velocity_scaler" default="0.12" />
+
+  <arg name="manipulator" default="ur5_arm" />
+  <arg name="end_link" default="palm_link"/>
+
+  <arg name="record" default="false" />
+  <arg name="exp_no" default="0" />
+  <!-- reload gains -->
+  <rosparam file="$(find allegro_hand_kdl)/config/gains.yaml" command="load"
+    ns="allegroHand_$(arg hand)_$(arg num)"/>
+
+  <!-- load grasp data -->
+  <rosparam command="load" file="$(find lfd_experiments)/data/grasp/common.yaml" ns="lfd_experiments/grasps" subst_value="true" />
+  <rosparam command="load" file="$(find lfd_experiments)/data/grasp/pick.yaml" ns="lfd_experiments/grasps" />
+  <rosparam command="load" file="$(find lfd_experiments)/data/grasp/manipulate.yaml" ns="lfd_experiments/grasps" />
+  <rosparam command="load" file="$(find lfd_experiments)/data/grasp/pregrasp.yaml" ns="allegro_kdl/poses" />
+
+
+  <!-- Hand control servers -->
+    <!-- joint pose control -->
+  <include file="$(find allegro_hand_kdl)/launch/joint_pose_control.launch" >
+    <arg name="MAINTAIN" value="false"/>
+    <arg name="NS_POSE" value="allegro_kdl/poses"/>
+  </include>
+    <!-- joint trajectory (DMP) control -->
+  <node name="joint_trajectory_server_g"
+        type="joint_trajectory_server"
+        pkg="lfd_experiments"
+        output="screen">
+
+    <!-- no initial dmp -->
+    <param name="play_time" type="double" value="0"/>
+    <param name="dmp" value="" />
+
+    <!-- topic remappings -->
+    <remap from="joint_states" to="allegroHand_$(arg num)/joint_states"/>
+    <remap from="traj_torque" to="manipulation_torque" />
+
+  </node>
+
+    <!-- spring trajectory (DMP) control -->
+  <include file="$(find lfd_experiments)/launch/spring_trajectory_control.launch">
+    <arg name="pos_gain" value="320.0" />
+    <arg name="rot_gain" value="350.0" />
+    <!-- <arg name="vel_gain" value="60.0" /> -->
+    <arg name="stiffness" value="$(arg stiffness)" />
+    <arg name="anti_collision_gain" value="$(arg anti_collision_gain)" />
+    <arg name="sim" value="$(arg sim)" />
+  </include>
+
+  <!-- task trajectory (DMP) control -->
+  <include file="$(find lfd_experiments)/launch/task_trajectory_control.launch">
+    <arg name="time" value="0"/>
+  </include>
+
+  <!-- Control signal connectors -->
+  <include file="$(find allegro_hand_kdl)/launch/combine_torques.launch" />
+
+  <!-- Activate gravity compensation -->
+  <include file="$(find allegro_hand_kdl)/launch/gravity_compensate.launch"
+    unless="$(arg sim)"/>
+
+  <!-- stiffness adjuster, it needs a service call to begin-->
+  <node name="adjust_stiffness_g"
+        type="adjust_stiffness"
+        pkg="lfd_experiments"
+        output="screen" >
+
+      <param name="target_force" value="$(arg target_force)"/>
+      <param name="stiffness" value="$(arg stiffness)"/>
+      <param name="gain" value="$(arg adjuster_gain)"/>
+
+  </node>
+
+  <!-- tactile control nodes need optoforce data published -->
+  <include file="$(find optoforce_publisher)/launch/optoforce_publisher.launch">
+    <arg name="invert" value="true"/>
+    <arg name="zero" value="true"/>
+  </include>
+
+  <!-- Run without debugger -->
+  <node name="grasp_node" pkg="lfd_experiments"
+	type="grasp_node" respawn="false" output="screen"
+  unless="$(arg debug)">
+
+    <param name="manipulator" value="$(arg manipulator)" />
+    <param name="end_link" value="$(arg end_link)" />
+    <param name="velocity_scaler" value="$(arg velocity_scaler)" />
+    <param name="rest_length" value="$(arg rest_length)" />
+    <param name="stiffness" value="$(arg stiffness)" />
+  </node>
+
+  <!-- Run with GDB debugger -->
+  <node name="grasp_node" pkg="lfd_experiments"
+	type="grasp_node" respawn="false" output="screen"
+	launch-prefix="xterm -e gdb --args"
+  if="$(arg debug)" >
+
+    <param name="manipulator" value="$(arg manipulator)" />
+    <param name="end_link" value="$(arg end_link)" />
+    <param name="velocity_scaler" value="$(arg velocity_scaler)" />
+    <param name="rest_length" value="$(arg rest_length)" />
+    <param name="stiffness" value="$(arg stiffness)" />
+  </node>
+
+  <node pkg="rosbag" type="record" name="rosbag_record_g"
+      args="record -O iros_bag_$(arg exp_no) /joint_states /position_torque /torque_unlimited /experiment_label /joint_control_errors /optoforce_wrench_0 /optoforce_wrench_1 /optoforce_wrench_2 /optoforce_wrench_3 /stiffness_adjusted /task_traj_log /virtual_frame_pub /tactile_magnitude /vf_cur_trace_pub /vf_des_trace_pub /finger_wrench_0 /finger_wrench_1 /finger_wrench_2 /finger_wrench_3"
+      if="$(arg record)" />
+
+  <rosparam command="dump" file="iros_param_$(arg exp_no)"
+    if="$(arg record)" />
+
+</launch>

@@ -1,0 +1,7 @@
+# zero position is the reference position on the table
+zero_point:
+  x: 0.125 # 12.5 cm
+  y: 0.35 # 12.5 + 22.5 cm
+  z: 0.98 # 98 cm
+# path to the folder of dmp files
+dmp_path: $(find lfd_experiments)/data/grasp/dmp
