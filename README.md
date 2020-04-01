@@ -9,9 +9,13 @@ This is the top package to test virtual springs and DMPs. It uses all other pack
 **Warning:** *This package is not intended for general use. It contains ad-hoc code for experiments presented in the above paper. It may serve as example code, but running it directly on a different robot setup may be unsafe.*
 
 ## Install
-*Tested on Ubuntu 16.04, ROS-Kinetic*
+*Tested on Ubuntu 16.04, ROS-Kinetic and Ubuntu 18.04, ROS-Melodic*
 
 - [Install ROS](http://wiki.ros.org/kinetic/Installation) & [create a catkin workspace](http://wiki.ros.org/catkin/Tutorials/create_a_workspace)
+- Install [universal-robot](https://github.com/ros-industrial/universal_robot) package (replace *melodic-devel* with your distro):
+  ```
+  git clone https://github.com/ros-industrial/universal_robot.git -b melodic-devel
+  ```
 - Install [*allegro-hand-ros (experimental branch)*](https://github.com/gokhansolak/allegro-hand-ros/tree/experimental), [*dmp_tools*](https://github.com/ARQ-CRISP/ros_dmp_tools) and [*optoforce_publisher*](https://github.com/ARQ-CRISP/optoforce_publisher) according to their READMEs.
 - Clone [*kdl_control_tools*](https://github.com/ARQ-CRISP/kdl_control_tools), [*spring_framework*](https://github.com/ARQ-CRISP/spring_framework), [*arq_ur5*](https://github.com/ARQ-CRISP/arq_ur5), [*allegro_hand_kdl*](https://github.com/ARQ-CRISP/allegro_hand_kdl), [*topic_connector*](https://github.com/ARQ-CRISP/ros_topic_connector), [*ur5_allegro_moveit*](https://github.com/ARQ-CRISP/ur5_allegro_moveit) into `your-catkin-workspace/src` directory:
   ```
@@ -70,7 +74,7 @@ When the fingers are on the object, virtual springs are activated to apply grasp
 
 The program prompts the user at each phase to choose the type of grasp and the DMP to execute.
 
-The arm is controlled using MoveIt! framework (packages _arq\_ur5_, _ur5\_allegro\_moveit_). Allegro hand is controlled using KDL library (_allegro\_hand\_kdl_). Fingers are closed using DMP framework and grasping forces are applied using the virtual spring framework (_ros\_dmp\_tools_, _spring\_framework_).
+The arm is controlled using MoveIt! framework (packages _arq\_ur5_, _ur5\_allegro\_moveit_). Allegro hand is controlled using KDL library (_allegro\_hand\_kdl_). Fingers are closed using DMP framework and grasping forces are applied using the virtual spring framework (_ros\_dmp\_tools_, _spring\_framework_). You can load the RViz configuration file *data/config/lfd_experiments.rviz* to view the related markers.
 
 #### Run in real-world:
 

@@ -81,10 +81,8 @@
 
   <!-- Following are needed by the launch files -->
   <exec_depend>allegro_hand</exec_depend>
-  <exec_depend>allegro_hand_rviz</exec_depend>
   <exec_depend>allegro_hand_parameters</exec_depend>
   <exec_depend>optoforce_publisher</exec_depend>
-
 
   <!-- for generating services and messages -->
   <build_depend>message_generation</build_depend>
