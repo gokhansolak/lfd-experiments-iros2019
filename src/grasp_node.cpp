@@ -509,9 +509,7 @@ bool executeTaskTrajectory(){
   if(custom_goal_){
     tr_srv.request.custom_goal = true;
     tr_srv.request.cartesian_goal = *custom_goal_;
-  }else
-    custom_goal_ = false;
-
+  }
 
   return task_traj_client_.call(tr_srv);
 }
